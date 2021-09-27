@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  /* start variables */
+  :root {
+    --dark-purple: #A470FB;
+    --light-purple: #D0B8EE;
+    --light-grey: #bbb;
+    --white: #fff;
+    --black: #000;
+  }
+/*start main div */
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.container img{
+    width:100%;
+    height: 100%;
+}
+.container .container__form{
+  
+    display: flex;
+    align-items: center;
+    padding:50px;
+}
+
+.container .container__form h4{
+     font-weight: 200;
+    margin-top: 50px;
+    color: #080808b0; 
+}
+.container .container__form .container__box{
+    padding:40px;
+   
+}
+.container .container__form .container__box input[type="text"]{
+    padding: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #808080c9;
+}
+.container .container__form .container__box .container__reset input{
+   
+    display: flex;
+    padding:10px;
+    margin-top: 30px;
+    width: 100%;
+    background-color: var(--dark-purple) ;
+    color: var(--white);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;  
+}
+
+#message{
+    font-size: small;
+    color: red;
+}

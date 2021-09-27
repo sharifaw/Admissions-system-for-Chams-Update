@@ -1,0 +1,50 @@
+.main__admin-application-details {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); */
+  grid-template-columns: 600px 1fr;
+  /* grid-auto-rows: 180px; */
+  grid-gap: 35px;
+}
+.main__single-info {
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+.main__download-file {
+  display: block;
+  width: fit-content;
+  margin-bottom: 10px;
+  color: var(--black);
+  font-size: 18px;
+}
+.main__download-file:hover {
+  color: var(--dark-purple);
+}
+.main__comment {
+  display: block;
+  height: 125px;
+  padding: 5px;
+  font-size: 16px;
+  resize: none;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.main__comment-btn {
+  padding: 7px 12px;
+  border: none;
+  background-color: var(--dark-purple);
+  color: var(--white);
+  cursor: pointer;
+}
+.main__comment-content {
+  margin-top: 20px;
+  padding: 10px;
+  background: var(--light-purple);
+}
+.main__comment-delete-icon {
+  display: block;
+  color: var(--light-red);
+  cursor: pointer;
+  margin-top: 12px;
+  margin-left: auto;
+  width: fit-content;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="register-CSS.css">
+  <title>Register</title>
+</head>
+
+<body>
+  <main>
+    <div class="register">
+      <div class="register__all-div">
+        <div class="register__first-div">
+          <h1 class="register__reg-header">New Register</h1>
+          <form class="register__form">
+            <label class="register__label">First Name</label>
+            <input class="register__input" type="text" placeholder="enter your first name" id="first_name" required>
+            <label class="register__label">Last Name</label>
+            <input class="register__input" type="text" placeholder="enter your last name" id="last_name" required>
+            <label class="register__label">Email</label>
+            <input class="register__input" type="email" placeholder="enter your Email" id="email" required>
+            <label class="register__label">Password</label>
+            <input class="register__input" type="password" placeholder="enter your password" id="password" required>
+            <div class="register__error" id="register__error" hidden>
+              Please try again later
+            </div>
+            <button class="register__button" id="register_btn">Register</button>
+          </form>
+        </div>
+      </div>
+
+
+      <div class="register__second-div">
+        <img class="register__image" src="image.jpg">
+      </div>
+    </div>
+  </main>
+  <script src="./register.js"></script>
+</body>
+
+</html>

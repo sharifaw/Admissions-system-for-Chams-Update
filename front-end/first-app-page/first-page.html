@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="first-page.css">
+</head>
+
+<body>
+    <div class='main__container'>
+        <div class='container'>
+            <h1 class='regform'>Registraion Form</h1>
+            <form class='main'>
+                <div class='main__name main__register-input'>
+                    <input type="text" placeholder="First Name" class='firstname'>
+                    <input type="text" placeholder="Last Name" class='lastname'>
+                </div>
+
+                <div class='main__email main__register-input'>
+                    <input type="text" placeholder=' Your Email'>
+                </div>
+
+                <div class="main__nationality main__register-input">
+                    <input type="text" placeholder='Your Nationality'>
+                </div>
+
+                <div class="main__birthday main__register-input">
+                    <input type="date">
+                </div>
+
+                <div class='radio'>
+                    <h4>Gender</h4>
+                      <div class='main__radio'>
+                        <input type="radio" id="Male" name="Female" value="Male">
+                        <label for="Male">Male</label><br>
+                        <input type="radio" id="Female" name="Female" value="Female">
+                        <label for="Female">Female</label><br>
+                    </div>
+                </div>
+
+                <div class='main__UNHCR main__register-input'>
+                    <input type="text" placeholder="UNCHR number if applicable">
+                </div>
+
+                <div class='main__address main__register-input'>
+                    <input type="text" name="" placeholder="Your Address" id="">
+                </div>
+
+                <div class='radio'>
+                    <h4> Marital State</h4>
+                    <div class='main__radio'>
+                        <input type="radio" id="child" name="main__marital" value="Single" />
+                        <label for="child">Single</label><br />
+                        <input type="radio" id="adult" name="main__marital" value="Married" />
+                        <label for="adult">Married</label><br />
+                    </div>
+                </div>
+
+                <div class='phone'>
+                    <input type="tel" placeholder='Area Code' class='main__code '>
+                    <input type="tel" placeholder='Phone Number' class='main__number'>
+                </div>
+
+                <div class="custom-select">
+                    <select>
+                        <option disabled="disabled" selected='selected'>Highest degree earned</option>
+                        <option value="">Less than high school</option>
+                        <option value="">High School</option>
+                        <option value="">2-Year College</option>
+                        <option value="">Bachelor's Degree</option>
+                        <option value="">Master's Degree</option>
+                        <option value="">Doctoral Degree</option>
+                    </select>
+                </div>
+
+                <div class="custom-select">
+                    <select>
+                        <option disabled="disabled" selected='selected'>Field of study if applicable</option>
+                        <option value="">Engineering</option>
+                        <option value="">Business</option>
+                        <option value="">Computer Science</option>
+                        <option value="">Education</option>
+                        <option value="">Science</option>
+                        <option value="">Other Field</option>
+                    </select>
+                </div>
+
+                <div class='radio'>
+                    <h4>Employment status</h4>
+                    <div class='main__radio'>
+                        <input type="radio" id="Emplyed" name="age" value="Male" />
+                        <label for="Emplyed">Emplyed</label><br />
+                        <input type="radio" id="adult" name="age" value="Female" />
+                        <label for="adult">Un-employed</label><br />
+                    </div>
+                </div>
+
+                <div class="custom-select">
+                    <select>
+                        <option disabled="disabled" selected='selected'>How did you hear about Chams?</option>
+                        <option value="">Social Media</option>
+                        <option value="">Google</option>
+                        <option value="">Through A Friend</option>
+                        <option value="">other</option>
+                    </select>
+                </div>
+
+                <div class='main__text '>
+                    <h4>Tell us <br /> about your <br /> background</h4>
+                    <textarea cols="20" rows="7" placeholder="   Your Story"></textarea>
+                </div>
+
+                <div class='main__text'>
+                    <h4>What is your<br /> plans for <br />the future?</h4>
+                    <textarea cols="20" rows="7" placeholder="  Your Plans"></textarea>
+                </div>
+
+                <div class='radio'>
+                    <h4>Are you fully available for the program?</h4>
+                    <div class='main__radio'>
+                        <input type="radio" id="Emplyed" name="age" value="Male" />
+                        <label for="Emplyed">Yes</label><br />
+                        <input type="radio" id="adult" name="age" value="Female" />
+                        <label for="adult">No</label><br />
+                    </div>
+                </div>
+
+                <div class='main__text'>
+                    <h4> Coding experience
+                    </h4>
+                    <textarea cols="20" rows="7" placeholder="  Your Experience in coding"></textarea>
+                </div>
+
+                <div class='submittion'>
+                    <button>Submit</button>
+                    <button>Save</button>
+                </div>
+            </form>
+        </div>
+  </div>
+    <script src="first-page.js"></script>
+</body>
+</html>

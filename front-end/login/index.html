@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Login</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <main class="login-main">
+
+    <div class="main__form-container">
+
+      <div class="main__login">
+
+        <h2 class="main__heading">Log in</h2>
+
+        <form class="main__form" id="main__form">
+
+          <div class="main__form-control">
+
+            <label for="main__email" class="main__label">Email</label>
+            <input type="text" id="main__email" class="main__input" placeholder="enter your email">
+
+          </div>
+          <div class="main__form-control">
+
+            <label for="main__password" class="main__label">Password</label>
+            <input type="password" id="main__password" class="main__input" placeholder="enter your password">
+
+          </div>
+          <span class="error_message"></span>
+          <input type="submit" class="main__input main__submit" value="Log In">
+        </form>
+
+        <a href="#" class="main__forgot-password">Forgot password?</a>
+
+        <p>Don't have an account? <a href="#" class="main__register">Register here</a></p>
+
+      </div>
+
+      <div class="main__img"></div>
+
+    </div>
+  </main>
+  <script src="./login.js"></script>
+</body>
+
+</html>

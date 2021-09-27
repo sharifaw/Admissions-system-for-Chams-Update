@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+/* start variables */
+:root {
+  --dark-purple: #a470fb;
+  --light-purple: #d0b8ee;
+  --light-grey: #bbb;
+  --white: #fff;
+  --black: #000;
+  --red: #f00;
+}
+/* end variables */
+
+/* start log in page */
+.login-main {
+  display:flex;
+    flex-flow: row;
+    margin: auto;
+    margin-top: 10%; 
+    background:white;
+    width: 30%;
+    height: 400px;
+    box-shadow: 0 0 20px 10px rgb(217, 173, 230);
+    justify-content: center;
+}
+body{
+  background-color: #d85ace;
+}
+img{
+  width: 150px;
+  height: 30px;
+  margin-left: 85px;
+  margin-top: 15px;
+}
+h3{
+  margin-top: 15px;
+margin-left: 70px;
+
+}
+.last_div{
+  justify-content: center;
+  text-align: center;
+}
+.main__form-control{
+  position: relative;
+   display: block; 
+   margin-bottom: 20px;
+}
+.main__form{
+  margin-top: 15px;
+  display: flex;
+flex-flow: column;
+}
+.main__input{
+  color:#8a8a8a;
+	display: block;
+  width: 100%;
+	height: 44px;
+	padding: 5px 5%;
+	border:1px solid #ccc;
+	-moz-border-radius: 27px;
+	-webkit-border-radius: 27px;
+	border-radius: 27px;
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	background-color: #fff;
+	font-family:'HelveticaNeue','Arial', sans-serif;
+	font-size: 105%;
+	letter-spacing: .8px;
+}
+.main__input:focus{
+  outline: none; 
+  border:1px solid #d85ace;
+   color:#d85ace;
+   background-color: none;
+}
+.formTop{
+  margin-top: -20px;
+  left:26px; 
+  background-color: #fff;
+   padding:0 5px; 
+   font-size: 14px;
+    color:#d85ace !important;}
+p.formLabel {
+	position: absolute;
+	left:26px;
+	top:12px;
+	transition:all .4s ease;
+	color:#bbb;}
+
+input[type="submit"]:hover{
+  background-color:  #d85ace;
+   border:1px  #d85ace; 
+   color:white; 
+   font-size: large;
+   border-radius: 5px;
+   cursor:pointer;}
+input[type="submit"]:focus{outline: none;}
+.main__submit{
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: rgb(146, 145, 145);
+  border: none;
+  width: 39%;
+  margin: 0 auto;
+}
+
+.error_message {
+  display: inline-block;
+  color: var(--red);
+  margin-left: 45px; 
+  margin-bottom: 10px;
+}
+.login-main .main__forgot-password {
+  color: var(--black);
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  width: fit-content;
+}
+.login-main .main__register {
+  text-decoration: none;
+  color: var(--dark-purple);
+  font-weight: bold;
+} 

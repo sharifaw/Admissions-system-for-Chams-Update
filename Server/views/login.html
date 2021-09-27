@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="login-main">
+
+      <div class="main__login">
+        <img src="output-onlinepngtools.png">
+        <h3 class="main__heading">Log in to CHAMS</h3>
+
+        <form class="main__form" id="main__form">
+
+          <div class="main__form-control">
+
+            <p class="formLabel">Email</p>
+            <input type="text" id="main__email" class="main__input"  >
+
+          </div>
+          <div class="main__form-control">
+
+            <p class="formLabel">password</p>
+            <input type="password" id="main__password" class="main__input"  >
+
+          </div>
+          <span class="error_message"></span>
+          <input type="submit" class="main__submit" value="Log In">
+        </form>
+          <div id="last_div">
+        <a id="forget_password_link" href="#" class="main__forgot-password">Forgot password?</a>
+
+        <p>Don't have an account? <a id="register_link" href="#" class="main__register">Register here</a></p>
+      </div>
+      </div>
+
+    </div>
+  <script src="./login.js"></script>
+</body>
+
+</html>

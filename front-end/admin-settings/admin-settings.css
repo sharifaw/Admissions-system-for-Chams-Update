@@ -1,0 +1,54 @@
+/* start admin setting page */
+.main__content {
+  margin-top: 0;
+}
+.admin-settings__container {
+  width: 50%;
+}
+.main__admin-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main__admin-settings .form__form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main__admin-settings .form__form-group:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+.main__admin-settings .form__form-group .form__label {
+  font-size: 18px;
+  font-weight: bold;
+  width: 50%;
+}
+.main__admin-settings .form__form-group .form__item-value {
+  padding: 10px;
+  border: 1px solid var(--light-grey);
+  font-size: 15px;
+  width: 50%;
+}
+.admin-settings__btn-container {
+  text-align: right;
+}
+.admin-settings__btn-container .normal-btn {
+  padding: 7px 15px;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--dark-purple);
+  color: var(--white);
+}
+.admin-settings__btn-container .edit-btn {
+  background-color: #4caf50;
+  margin-bottom: 20px;
+  display: none;
+}
+.admin-settings__btn-container .save-btn {
+  margin-top: 20px;
+}
+.admin-settings .popup__body {
+  font-weight: bold;
+  font-size: 20px;
+}
+/* end admin settings page */
