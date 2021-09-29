@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Forget Password</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -14,20 +15,21 @@
         <form class='container__form' action="">
             <div class='container__box'>
                 <h2>Recovery Password</h2>
-                <h4>
+                <h5>
                     Please enter your email address below and we will send you information
                     to change your password.
-                </h4>
-                <h4> Enter Email Address</h4>
-                <input type="text" placeholder="email@example.com"  id="email"/>
-                <div class='container__reset'>
+                </h5>
+                <div id="input_section">
+                    <i class="fa fa-envelope" style="font-size:25px;color:rgb(228, 166, 166);margin-top:2px;"></i>
+                <input type="email" placeholder="ENTER YOUR E-MAIL HERE"  id="email" autocomplete="off">
+               </div>
+              <div class='container__reset'>
                     <p id="message"></p>
                     <input type="submit" value="Reset" id="submitButton" />
                 </div>
             </div class='container__box'>
         </form>
-        <img src="https://2e8ram2s1li74atce18qz5y1-wpengine.netdna-ssl.com/wp-content/uploads/2018/08/shutterstock_1060094186-1024x768.jpg"
-            alt="">
+
 
     </div>
     <script src="script.js"></script>

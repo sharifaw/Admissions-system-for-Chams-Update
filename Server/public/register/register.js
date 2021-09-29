@@ -65,3 +65,42 @@ function isCookie(result) {
     document.cookie = `${key} = ${result[key]};path=/;Secure`;
   }
 }
+document.querySelector(".register__form").addEventListener("click", event => {
+  // event.preventDefault();
+  if (event.target.className == "register__input") {
+    event.target.previousElementSibling.classList.add("formTop");
+  }
+  else if (event.target.className == "formLabel") {
+    event.target.classList.add("formTop");
+    event.target.nextElementSibling.focus();
+  }
+  // console.log(event.target.className );
+
+
+})
+document.querySelector(".register__form").addEventListener("keydown", event => {
+
+  if (event.target.className == "register__input") {
+    event.target.previousElementSibling.classList.add("formTop");
+  }
+  else if (event.target.className == "formLabel") {
+    event.target.classList.add("formTop");
+    event.target.nextElementSibling.focus();
+  }
+  // console.log(event.target.className );
+
+})
+
+document.body.addEventListener("click", event => {
+
+  let label = document.querySelectorAll("p");
+  for (let i = 0; i < label.length; i++) {
+    if (label[i].className == "formLabel formTop") {
+      if (label[i].nextElementSibling.value == "") {
+        label[i].classList.remove("formTop");
+
+      }
+    }
+  }
+
+})
