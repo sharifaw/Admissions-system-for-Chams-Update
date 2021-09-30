@@ -62,9 +62,7 @@ function renderAdminApplicationDetails() {
         <div class="main__file-container">
           <div class="main__file-container-top">
             <div id="assignment">
-              <a href="text.txt" download class="main__download-file" title="download this file">
-                <i class="fas fa-file-download"></i> file name
-              </a>
+              <p>assignment path : </p>
             </div>
           ${renderSelectElement()}
           </div>
@@ -86,8 +84,8 @@ function renderSelectElement() {
   return `
     <select name='' id=''>
       ${candidateStatuses.reduce((result, status) => {
+        //getInformationFromCookies().status_id;
         let option = `<option value=${status[1]}>${status[2]}</option>`;
-        // getInformationFromCookies().status_id
         if (status[0] == "rejected") {
           option.checked;
         }
@@ -163,17 +161,22 @@ document.body.insertAdjacentHTML(
 );
 window.addEventListener("DOMContentLoaded", () => {
   const { id } = getInformationFromCookies();
+  let candidateStatus = getInformationFromCookies().status_id;
+  let selectElement = document.querySelector("select");
+  selectElement.value = candidateStatus;
   
+  
+
   fetch(`http://localhost:6000/get-assignments/${id}`)
   .then((response) => {
-    
-    return response.json();
+    if (response.status == 200) {
+      return response.json();
+    }
   })
   .then(result => {
     if (result){
-      const assignment = document.getElementById('assignment');
-      
-      assignment.innerHTML = `<p>assignment path : <strong>${result[1].assignment}</strong>`;
+      let assignment = document.getElementById('assignment');
+      assignment.innerHTML = `<p>assignment path : <strong>${result[0].assignment}</strong>`;
     }
   })
 
@@ -211,24 +214,43 @@ window.addEventListener("DOMContentLoaded", () => {
 
 let select=document.querySelector("select");
 select.addEventListener("change",()=>{
-  
+  const {id} = getInformationFromCookies();
+  console.log('id = ',id);
+  console.log('value ',select.value);
+  let changed = false;
+
   const postOption = {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      email: `${getInformationFromCookies().email}`,
-    }),
-  };
-  fetch("http://localhost:6000/chamsbootcamp/sending-email",postOption).
-  then(response=>{
-    if(response.status==200){
-      
+      "status_id": `${select.value}`,
+    })
+  }
+
+  fetch(`http://localhost:6000/candidate-status/${id}`,postOption)
+  .then(response => {
+    if (response.status == 200){
+      changed = true;
     }
-    return response.text();
   })
-  .then(result=>{
-    
-  })
+  console.log(changed);
+  if (changed){
+    const postOption1 = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email: `${getInformationFromCookies().email}`,
+      }),
+    };
+
+    fetch("http://localhost:6000/chamsbootcamp/sending-email",postOption1).
+    then(response=>{
+      console.log( 'status = ',response.status);
+      if(response.status==200){
+        return response.json()
+      }
+    })
+  }
 })
 
 

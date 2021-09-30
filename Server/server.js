@@ -11,7 +11,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 const express = require('express');
-const { storage, upload} = require('./upload')
+const { storage, upload } = require('./upload')
 storage;
 /// treating
 
@@ -172,64 +172,64 @@ app.post('/chamsbotcamp/register', parseBody, (request, response) => {
 
 
 app.post("/chamsbotcamp/signin", parseBody, function (request, response) {
-  
+
     let { email, password } = request.body;
-  
+
     if (!email || !password) {
-      return response.status(400).send("Please fill your Email and Password"); 
+        return response.status(400).send("Please fill your Email and Password");
     }
-  
+
     if (email.includes("@gmail.com")) {
-      connection.query("SELECT * FROM admin WHERE email=?", [email],function (err, rows) {
-        if (err) {
-          return response.status(500).send(err);
-        }
-        let user = rows[0];
-  
-        if (!user) {
-          response.status(401).send("email is wrong");
-          return;
-        }
-        bcrypt.compare(password, user.password, function (err, result) {
-          if (err) {
-            response.status(500).send("Auth Faill");
-            return;
-          }
-          if (result == true) {
-            const token = createtoken(user.id, user.email, "1d");
-            response.cookie("token", token, { httpOnly: true, secure: true });
-            response.status(200).send({ id: user.id, email: user.email, userName: user.user_name });
-          } else {
-            return response.status(401).send("Wrong password");
-          }
+        connection.query("SELECT * FROM admin WHERE email=?", [email], function (err, rows) {
+            if (err) {
+                return response.status(500).send(err);
+            }
+            let user = rows[0];
+
+            if (!user) {
+                response.status(401).send("email is wrong");
+                return;
+            }
+            bcrypt.compare(password, user.password, function (err, result) {
+                if (err) {
+                    response.status(500).send("Auth Faill");
+                    return;
+                }
+                if (result == true) {
+                    const token = createtoken(user.id, user.email, "1d");
+                    response.cookie("token", token, { httpOnly: true, secure: true });
+                    response.status(200).send({ id: user.id, email: user.email, userName: user.user_name });
+                } else {
+                    return response.status(401).send("Wrong password");
+                }
+            });
         });
-      });
-      } else {
+    } else {
         connection.query("SELECT * FROM register WHERE email=?", [email], function (err, rows) {
-          if (err) {
-           return response.status(500).send(err);
-          }
-          var user = rows[0];
-  
-        if (!user) {
-          response.status(401).send("email is wrong");
-          return;
-        }
-  
-        bcrypt.compare(password, user.password, function (err, result) {
-          if (err) {
-            response.status(500).send("Auth Faill");
-            return;
-          }
-          if (result == true) {
-            const token = createtoken(user.id, user.email, "1d");
-            response.cookie("token", token, { httpOnly: true , Secure : true});
-            response.status(200).send({ id: user.id, email: user.email, firstName: user.first_name, lastName: user.last_name, status_id: user.status_id });
-          } else {
-            return response.status(401).send("Wrong password");
-          }
+            if (err) {
+                return response.status(500).send(err);
+            }
+            var user = rows[0];
+
+            if (!user) {
+                response.status(401).send("email is wrong");
+                return;
+            }
+
+            bcrypt.compare(password, user.password, function (err, result) {
+                if (err) {
+                    response.status(500).send("Auth Faill");
+                    return;
+                }
+                if (result == true) {
+                    const token = createtoken(user.id, user.email, "1d");
+                    response.cookie("token", token, { httpOnly: true, Secure: true });
+                    response.status(200).send({ id: user.id, email: user.email, firstName: user.first_name, lastName: user.last_name, status_id: user.status_id });
+                } else {
+                    return response.status(401).send("Wrong password");
+                }
+            });
         });
-      });
     }
 });
 
@@ -862,7 +862,7 @@ app.post("/chamsbootcamp/candidate-application", (request, response) => {
             const { student_id, nationality, nationality_number, date_of_birth, gender,
                 unchr_number, marital_status, phone_number, address,
                 field_of_study, employment_status, hearing_about_chams, candidate_background,
-                programming_available, coding_experience, future_plans,application_date } = request.body;
+                programming_available, coding_experience, future_plans, application_date } = request.body;
 
             if (!student_id || !nationality || !date_of_birth || !gender ||
                 !marital_status || !phone_number || !address ||
@@ -890,13 +890,13 @@ app.post("/chamsbootcamp/candidate-application", (request, response) => {
                             return response.status(500).send(err);
                         }
                         connection.query("UPDATE `register` SET status_id=1 where id=?",
-                        [decoded.id],(err, result) => {
-                            if (err) {
-                                return response.status(500).send(err);
-                            }
-                            response.status(200).send(result);
-                        })
-                        
+                            [decoded.id], (err, result) => {
+                                if (err) {
+                                    return response.status(500).send(err);
+                                }
+                                response.status(200).send(result);
+                            })
+
                     })
             })
         })
@@ -916,13 +916,13 @@ app.get("/chamsbootcamp/admin-comments/:id", (request, response) => {
             }
             if (decoded.email.includes("@gmail.com")) {
                 connection.query('SELECT * from `admin` Where email=?', [decoded.email],
-                (err, admin) => {
-                    if (err) {
-                        return response.status(500).send(err)
-                    }
-                    if (admin.length > 0) {
-                        connection.query('SELECT * from `admin_comments` where student_id = ?',[request.params.id], (err, result) => {
-                            if (err) {
+                    (err, admin) => {
+                        if (err) {
+                            return response.status(500).send(err)
+                        }
+                        if (admin.length > 0) {
+                            connection.query('SELECT * from `admin_comments` where student_id = ?', [request.params.id], (err, result) => {
+                                if (err) {
                                     return response.status(500).send(err);
                                 }
                                 response.status(200).send(result);
@@ -939,64 +939,64 @@ app.get("/chamsbootcamp/admin-comments/:id", (request, response) => {
 })
 
 app.post("/chamsbootcamp/sending-email", (request, response) => {
-    let email= request.body.email;
-    let idStatus=request.body.id_status;
+    let email = request.body.email;
+    let idStatus = request.body.id_status;
     console.log(email);
     console.log(idStatus);
-    let query = "SELECT * FROM `register` WHERE email=?";
+    let query = "SELECT email FROM `register` WHERE email=?";
     connection.query(query, email, (err, result) => {
-      if (err) {
-        return response.status(500).send(err);
-      }
-      console.log('resu =',result);
-      if (result.length > 0) {
-        let token = request.cookies.token;
-        console.log(token);
-        jwt.verify(token, "jsfashlaekhe", function (err, decoded) {
-          if (err) {
-            return response.status(408).redirect("../login");
-          }
-          if (decoded.email.includes("@gmail.com")) {
-            if (!idStatus || !email) {
-              return response.status(400).send("fill information");
-            }
-              console.log(decoded.email);
-              connection.query("SELECT * from `admin` Where email=?", [decoded.email], (err, admin) => {
+        if (err) {
+            return response.status(500).send(err);
+        }
+        console.log('resu =', result);
+        if (result.length > 0) {
+            let token = request.cookies.token;
+            console.log(token);
+            jwt.verify(token, "jsfashlaekhe", function (err, decoded) {
                 if (err) {
-                  return response.status(500).send(err);
+                    return response.status(408).redirect("../login");
                 }
-                if (admin.length > 0) {
-                  // sending email
-                  console.log(admin.length);
-                  console.log('id =',idStatus);
-                  connection.query("SELECT * FROM `content_of_email` WHERE status_id=?", [idStatus],
-                  (err, result1) => {
-                    if (err) {
-                      return response.status(500).send(err);
-                    }else{
-                      if (result1.length > 0) {
-                        sendEmail1(email, result1[0].subject, result1[0].text_email);
-                        console.log('re = ',result1);
-                        return response.status(200).send("success");
-                      }
-                      else {
-                        return response.status(402).send("this status dosent has any email");
-                      }
+                if (decoded.email.includes("@gmail.com")) {
+                    if (!idStatus || !email) {
+                        return response.status(400).send("fill information");
                     }
-                    })
+                    console.log(decoded.email);
+                    connection.query("SELECT * from `admin` Where email=?", [decoded.email], (err, admin) => {
+                        if (err) {
+                            return response.status(500).send(err);
+                        }
+                        if (admin.length > 0) {
+                            // sending email
+                            console.log(admin.length);
+                            console.log('id =', idStatus);
+                            connection.query("SELECT * FROM `content_of_email` WHERE status_id=?", [idStatus],
+                                (err, result1) => {
+                                    if (err) {
+                                        return response.status(500).send(err);
+                                    } else {
+                                        if (result1.length > 0) {
+                                            sendEmail1(email, result1[0].subject, result1[0].text_email);
+                                            console.log('re = ', result1);
+                                            return response.status(200).send("success");
+                                        }
+                                        else {
+                                            return response.status(402).send("this status dosent has any email");
+                                        }
+                                    }
+                                })
+                        }
+                        else {
+                            return response.status(401).send("failed to update");
+                        }
+                    });
+                } else {
+                    return response.status(404).send("admin is not exist");
                 }
-                else {
-                  return response.status(401).send("failed to update");
-                }
-              });
-          } else {
-            return response.status(404).send("admin is not exist");
-          }
-        });
-      }
-      else{
-      }
-      return response.status(404).send("candidate is not exist");
+            });
+        }
+        else {
+        }
+        return response.status(404).send("candidate is not exist");
     });
 });
 
@@ -1009,17 +1009,18 @@ app.get("/get-assignments/:id", (request, response) => {
             }
             if (decoded.email.includes("@gmail.com")) {
                 connection.query('SELECT * from `admin` Where email=?', [decoded.email],
-                (err, admin) => {
-                    if (err) {
-                        return response.status(500).send(err)
-                    }
-                    if (admin.length > 0) {
-                        connection.query('SELECT assignment from `application` where student_id = ?',[request.params.id], (err, result) => {
-                            if (err) {
+                    (err, admin) => {
+                        if (err) {
+                            return response.status(500).send(err)
+                        }
+                        if (admin.length > 0) {
+                            connection.query('SELECT assignment from `application` where student_id = ?', [request.params.id], (err, result) => {
+                                if (err) {
                                     return response.status(500).send(err);
                                 }
-                                console.log('result = ',result[0].assignment);
-                                response.status(200).send(result);
+                                if (result.length > 0) {
+                                    response.status(200).send(result);
+                                }
                             })
                         }
                     })
@@ -1147,6 +1148,42 @@ app.get("/chamsbootcamp/emails", (request, response) => {
 
 })
 
+app.post("/candidate-status/:id", function (request, response) {
+    let {status_id} = request.body;
+    let token = request.cookies.token;
+    if (token) {
+        jwt.verify(token, 'jsfashlaekhe', function (err, decoded) {
+            if (err) {
+                return response.status(408).redirect("../login");
+            }
+            if (decoded.email.includes("@gmail.com")) {
+                connection.query('SELECT * from `admin` Where email=?', [decoded.email],
+                (err, admin) => {
+                    if (err) {
+                        return response.status(500).send(err)
+                    }
+                    if (admin.length > 0) {
+                        console.log('st req =',status_id,request.params);
+                        connection.query('UPDATE `register` SET status_id=? where id = ?'
+                        ,[status_id,request.params.id], (err, result) => {
+                                console.log("not ");
+                                console.log('res = ',result);
+                                if (err) {
+                                    console.log('err = ',err);
+                                    return response.status(500).send(err);
+                                }
+                                response.status(200).send(result);
+                            })
+                        }
+                    })
+            }
+        })
+    }
+    else {
+        
+        return response.status(401).redirect("../login")
+    }
+})
 
 // rendering each page is under this line
 app.get("/login", (req, res) => {
@@ -1190,11 +1227,11 @@ app.get("/candidate-dashboard", (request, response) => {
                     response.status(500).send(err);
                     return;
                 }
-                
+
                 else if (result.length == 0) {
                     return response.status(402).redirect("../login");
                 }
-                else if (result[0].status_id != 6){
+                else if (result[0].status_id != 6) {
                     return response.status(200).render("candidate-dashboard");
                 }
                 return response.status(200).redirect("../application-page")
@@ -1231,7 +1268,7 @@ app.get("/application-page", (request, response) => {
 
 // testing router
 app.get("/putcookie", (request, response) => {
-    
+
     response.send("do")
 })
 // the end of the testing router

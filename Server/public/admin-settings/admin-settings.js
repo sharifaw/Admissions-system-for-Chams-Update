@@ -8,6 +8,26 @@ let editing2 = false;
 
 // functions
 
+function fixDate (date) {
+  let numDate = null
+  if (date[2] < 10){
+    date[2] = +(date[2]) + +("01");
+    numDate = date[2];
+    date[2] = "0";
+    date[2] = date[2] + numDate;
+    return date = date.join("-");  
+  }
+  else if (date[2] == 31){
+    date[2] = "01";
+    numDate = +(date[1])+1; 
+    
+    date[1] = "0" + +(numDate);
+    return date = date.join("-");
+  }
+  date[2] = +(date[2]) + +("01");
+  return date = date.join("-");
+}
+
 function renderBootcampSettings() {
   const emailSettings = document.querySelector("#email-settings");
   const bootcampSettings = document.querySelector("#bootcamp-settings");
@@ -41,19 +61,29 @@ function renderBootcampSettings() {
     <button class="normal-btn save-btn">Save</button>
   </div>
   </div>`);
-    fetch("http://localhost:6000/chamsbootcamp/app-deadline").then(response => {
+    fetch("http://localhost:6000/chamsbootcamp/app-deadline")
+    .then(response => {
       if (response.status == 200) {
         return response.json()
       }
     })
       .then(result => {
-
         if (result) {
+          
           const inputs = Array.from(document.querySelectorAll("input"));
+          let startDate = result[0].start_date.substring(0, 10).split("-");
+          startDate = fixDate(startDate);
+          let endDate = result[0].end_date.substring(0, 10).split("-");
+          endDate = fixDate(endDate);
+          let applicationDeadline = result[0].application_deadline.substring(0,10).split("-");
+          applicationDeadline = fixDate(applicationDeadline);
           inputs[0].value = result[0].bootcamp_name;
-          inputs[1].value = result[0].start_date.substring(0, 10);
-          inputs[2].value = result[0].end_date.substring(0, 10);
-          inputs[3].value = result[0].application_deadline.substring(0, 10);
+          inputs[1].value = startDate ;/*result[0].start_date.substring(0, 10);*/
+          
+          
+          inputs[2].value = endDate
+          inputs[3].value = applicationDeadline//result[0].application_deadline.substring(0, 10);
+          
           convertInputsIntoDivs();
           editing = true;
         }
@@ -95,7 +125,7 @@ function renderEmailSetting() {
         if (result[0].email !== null) {
           const inputs = Array.from(document.querySelectorAll("input"));
           inputs[0].value=result[0].email;
-          convertEmailSettingInputToDiv()
+          convertEmailSettingInputToDiv();
         }
         
       })
@@ -134,7 +164,7 @@ function saveInputsEmailSetting() {
     note.innerHTML = "";
     fetch("http://localhost:6000/getemailsettings", requestOption)
       .then(response => {
-        console.log(response.status);
+        
         convertEmailSettingInputToDiv();
       })
   }
@@ -292,7 +322,7 @@ function saveInputs() {
 function editInputs() {
   editing = true;
   document.querySelector(".edit-btn").disabled = true;
-  console.log();
+  
   convertDivsIntoInputs();
 }
 

@@ -28,7 +28,7 @@ function nav() {
     const { icon, item } = info;
 
     result += `
-          <li class="main__list-item ${index === 0 && "main__list-item--bg"}">
+          <li class="main__list-item ${index === 1 && "main__list-item--bg"}">
             ${icon} ${item}
           </li>`;
     return result;

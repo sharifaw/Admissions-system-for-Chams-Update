@@ -43,8 +43,10 @@ window.addEventListener("DOMContentLoaded", () => {
   let emailTemplatesLink = document.getElementById('email_templates');
   let settingsLink = document.getElementById('settings');
   let usersLink = document.getElementById('users');
-
+  console.log('dash = ', dashboardLink);
+  
   dashboardLink.addEventListener('click', () => {
+    console.log("test ");
     fetch("http://localhost:6000/chamsbotcamp/tokenauth")
       .then(response => {
         if (response.status == 401 || response.status == 500) {
