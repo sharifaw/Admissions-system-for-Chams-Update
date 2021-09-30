@@ -18,7 +18,6 @@
 /* start log in page */
 .login-main {
   display:flex;
-    flex-flow: row;
     margin: auto;
     margin-top: 10%; 
     background:white;

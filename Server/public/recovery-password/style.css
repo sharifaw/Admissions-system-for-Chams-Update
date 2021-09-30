@@ -12,25 +12,82 @@
     --white: #fff;
     --black: #000;
   }
-/*start main div */
-.container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100vw;
-    height: 100vh;
-    margin: 0 auto;
-    overflow: hidden;
-}
-.container img{
-    width:100%;
+  body{
+    background-color: #d85ace;
     height: 100%;
+  }
+
+form{
+ background-color: rgb(255, 255, 255);
+    display:flex;
+    margin: auto;
+    margin-top: 12%; 
+    width: 40%;
+    height: 280px;
+    box-shadow: 0 0 20px 10px rgb(217, 173, 230);
+text-align: center;
 }
-.container .container__form{
-  
-    display: flex;
-    align-items: center;
-    padding:50px;
+
+#submitButton:hover{
+    background-color:  #d85ace;
+     border:1px  #d85ace; 
+     color:white; 
+     font-size: large;
+     border-radius: 5px;
+     cursor:pointer;}
+  input[type="submit"]:focus{outline: none;}
+ #submitButton{
+    padding: 10px 10px;
+    border-radius: 20px;
+    background-color: rgb(146, 145, 145);
+    border: none;
+    width: 25%;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
+  h2{
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
+  h5{
+    margin-left: 13px;
+    margin-bottom: 10px;
+
+
+  }
+  #input_section{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid lightpink;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 50%;
+    margin: auto;
+
+
+  }
+  #message{
+    font-size: small;
+    color: red;
+} 
+#email{
+    padding: 5px;
 }
+
+/* .container .container__form{
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 15%;
+
+    background: transparent;
+    
+} */
+/*start main div */
+/* 
+
+
 
 .container .container__form h4{
      font-weight: 200;
@@ -64,7 +121,4 @@
     cursor: pointer;  
 }
 
-#message{
-    font-size: small;
-    color: red;
-}
+*/
