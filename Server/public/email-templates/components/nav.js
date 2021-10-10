@@ -37,12 +37,13 @@ function nav() {
     </nav>
   `;
 }
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
+  
   let dashboardLink = document.getElementById('dashboard');
   let emailTemplatesLink = document.getElementById('email_templates');
   let settingsLink = document.getElementById('settings');
   let usersLink = document.getElementById('users');
-
+  
   dashboardLink.addEventListener('click', () => {
     fetch("http://localhost:6000/chamsbotcamp/tokenauth")
       .then(response => {

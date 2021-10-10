@@ -84,14 +84,14 @@ function renderSelectElement() {
   return `
     <select name='' id=''>
       ${candidateStatuses.reduce((result, status) => {
-        //getInformationFromCookies().status_id;
-        let option = `<option value=${status[1]}>${status[2]}</option>`;
-        if (status[0] == "rejected") {
-          option.checked;
-        }
-        result += option;
-        return result;
-      }, "")}
+    //getInformationFromCookies().status_id;
+    let option = `<option value=${status[1]}>${status[2]}</option>`;
+    if (status[0] == "rejected") {
+      option.checked;
+    }
+    result += option;
+    return result;
+  }, "")}
     </select>
   `;
 }
@@ -143,7 +143,7 @@ function deleteCommentFromDOM(commentId) {
   const commentsElements = Array.from(document.querySelectorAll(".main__comment-content"));
   const targetedComment = commentsElements.find((comment) => comment.dataset.commentId == commentId);
   targetedComment.remove();
-  
+
 }
 // render
 document.body.insertAdjacentHTML(
@@ -164,21 +164,21 @@ window.addEventListener("DOMContentLoaded", () => {
   let candidateStatus = getInformationFromCookies().status_id;
   let selectElement = document.querySelector("select");
   selectElement.value = candidateStatus;
-  
-  
+
+
 
   fetch(`http://localhost:6000/get-assignments/${id}`)
-  .then((response) => {
-    if (response.status == 200) {
-      return response.json();
-    }
-  })
-  .then(result => {
-    if (result){
-      let assignment = document.getElementById('assignment');
-      assignment.innerHTML = `<p>assignment path : <strong>${result[0].assignment}</strong>`;
-    }
-  })
+    .then((response) => {
+      if (response.status == 200) {
+        return response.json();
+      }
+    })
+    .then(result => {
+      if (result) {
+        let assignment = document.getElementById('assignment');
+        assignment.innerHTML = `<p>assignment path : <strong>${result[0].assignment}</strong>`;
+      }
+    })
 
   fetch(`http://localhost:6000/chamsbootcamp/admin-comments/${getInformationFromCookies().id}`)
     .then((response) => {
@@ -194,7 +194,7 @@ window.addEventListener("DOMContentLoaded", () => {
       fileContainer.insertAdjacentHTML(
         "beforeend",
         candidateComments.reduce((result, comment) => {
-          
+
           result += renderComment(comment.comment, comment.id);
           return result;
         }, ""),
@@ -212,54 +212,40 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-let select=document.querySelector("select");
-select.addEventListener("change",()=>{
-  const {id} = getInformationFromCookies();
-  console.log('id = ',id);
-  console.log('value ',select.value);
+let select = document.querySelector("select");
+select.addEventListener("change", () => {
+  const { id } = getInformationFromCookies();
+  const statusId = select.value;
+
   let changed = false;
 
   const postOption = {
     method: "POST",
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      "status_id": `${select.value}`,
+      "status_id": `${statusId}`,
+      "email": `${getInformationFromCookies().email}`
     })
   }
 
-  fetch(`http://localhost:6000/candidate-status/${id}`,postOption)
-  .then(response => {
-    if (response.status == 200){
-      changed = true;
-    }
-  })
-  console.log(changed);
-  if (changed){
-    const postOption1 = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: `${getInformationFromCookies().email}`,
-      }),
-    };
-
-    fetch("http://localhost:6000/chamsbootcamp/sending-email",postOption1).
-    then(response=>{
-      console.log( 'status = ',response.status);
-      if(response.status==200){
-        return response.json()
+  fetch(`http://localhost:6000/candidate-status/${id}`, postOption)
+    .then(response => {
+      console.log(response.status);
+      if (response.status == 200 || response.status ==201) {
+        changed = true;
+        document.cookie = `status_id = ${statusId};Secure;path=/`;
+        console.log("done");
       }
     })
-  }
 })
 
 
 const logOutBtn = document.getElementsByClassName("header__logout")[0];
-logOutBtn.addEventListener("click",()=>{
+logOutBtn.addEventListener("click", () => {
   fetch("http://localhost:6000/logout")
-  .then((response)=>{
-    if (response.status == 200){
-      window.location.href = "../login"
-    }
-  })
+    .then((response) => {
+      if (response.status == 200) {
+        window.location.href = "../login"
+      }
+    })
 })

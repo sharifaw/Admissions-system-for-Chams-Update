@@ -70,7 +70,7 @@ registerLink.addEventListener('click', event => {
 
 function isCookie(result) {
   for (const key in result) {
-    document.cookie = `${key} = ${result[key]};Secure`
+    document.cookie = `${key} = ${result[key]};Secure;path=/`
   }
 }
 
