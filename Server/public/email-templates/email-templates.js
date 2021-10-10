@@ -24,34 +24,33 @@ function fetchEmails() {
       return response.json();
     })
     .then(result => {
-      console.log('r = ', result);
-
       result.forEach((element, index) => {
         emails[index] = element.text_email
       });
-      console.log('email = ',emails[0]);
-    })
+      let mainContent = document.querySelector(".main__content");
+      mainContent.innerHTML = `${renderEmailTemplates()}`;
+  })
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  fetchEmails();
-  console.log('email',emails);
+fetchEmails();
+window.addEventListener("DOMContentLoaded", () => {
+  console.log('here');
   document.body.insertAdjacentHTML(
     "afterbegin",
     `
-  ${header()}
-  <main class="main">
-    <div class="container">
-      <div class="main__offset"></div>
-      ${nav()}
-      <div class="main__content main__email-template">
-        ${renderEmailTemplates()}
+    ${header()}
+    <main class="main">
+      <div class="container">
+        <div class="main__offset"></div>
+        ${nav()}
+        <div class="main__content main__email-template">
+          ${renderEmailTemplates()}
+        </div>
       </div>
-    </div>
-  </main>
-  `,
-  );
-  const mainContent = document.querySelector(".main__content");
+    </main>
+    `,
+    );
+    console.log("main ");
+  let mainContent = document.querySelector(".main__content");
 
   mainContent.addEventListener("change", (event) => {
     const element = event.target;
@@ -78,7 +77,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       yesBtn.addEventListener("click", () => {
         emails[element.dataset.index] = element.value;
-        document.getElementById("popup").remove();
+        console.log('data set = ',element.dataset.index);
+        const emailId = +(element.dataset.index) +1;
+        const putOption = {
+          method: "PUT",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            "id": `${emailId}`,
+            "message": `${element.value}`,
+          })
+        }
+        fetch("http://localhost:6000/chamsbootcamp/email-templates",putOption)
+        .then((response) => {
+          if (response.status ==200){
+            document.getElementById("popup").remove();
+          }
+        })
+        // I'm here , I need to make fetch for updating an email when click on yes button
+        
       });
 
       noBtn.addEventListener("click", () => {

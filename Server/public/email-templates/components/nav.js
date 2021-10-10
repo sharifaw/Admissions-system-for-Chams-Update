@@ -28,7 +28,7 @@ function nav() {
     const { icon, item } = info;
 
     result += `
-          <li class="main__list-item ${index === 0 && "main__list-item--bg"}">
+          <li class="main__list-item ${index === 1 && "main__list-item--bg"}">
             ${icon} ${item}
           </li>`;
     return result;
@@ -37,12 +37,13 @@ function nav() {
     </nav>
   `;
 }
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
+  
   let dashboardLink = document.getElementById('dashboard');
   let emailTemplatesLink = document.getElementById('email_templates');
   let settingsLink = document.getElementById('settings');
   let usersLink = document.getElementById('users');
-
+  
   dashboardLink.addEventListener('click', () => {
     fetch("http://localhost:6000/chamsbotcamp/tokenauth")
       .then(response => {

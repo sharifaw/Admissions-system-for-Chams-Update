@@ -100,7 +100,7 @@ content :..............`, "you're being reviewed"];
         // start
         if (state == "test_req") {
           console.log('res = ', result[0].assignment != "");
-
+          console.log('assi = ', result[0].assignment);
           if (result[0].assignment != null && result[0].assignment !="") {
             console.log('yes');
             messages[1] = "your assignment was successfully assigned, now you are under reviewed";
@@ -133,42 +133,7 @@ content :..............`, "you're being reviewed"];
 
       })
   }
-  // setInterval(function () {
-  // }, 2000);
-
-
-  // if (state == "test_request") {
-  //   console.log('yess');
-  //   console.log('no');
-  //   fetch("http://localhost:6000/candidate-assignment")
-  //     .then(response => {
-  //       console.log('stat = ', response.status);
-  //       if (response.status == 200) {
-  //         return response.json()
-  //       }
-  //     })
-  //     .then(result => {
-  //       console.log('res = ', result);
-  //       if (result[0].assignment !== "") {
-  //         console.log('yes');
-  //         messages[1] = "your assignment was successfully assigned, now you are under reviewed";
-  //         renderContent(steps);
-  //       }
-  //       else {
-  //         messages[1] = `you are application has been approved and you have moved to the tech test her is your instructions about new test :
-  //     1.  ..................
-  //     2.  ..................
-  //     3.  ..................
-  //     <form action="/upload" method="post" enctype="multipart/form-data">
-  //     <input type="file" name="inputUpload" multiple/>
-  //     <button>Submit</button>
-  //     </form>`
-  //         renderContent(steps);
-  //       }
-  //     })
-  // }
-
-  // END OF DOMContentLoaded
+  
 })
 document.body.insertAdjacentHTML(
   "afterbegin",

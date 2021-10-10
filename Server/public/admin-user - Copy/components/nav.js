@@ -44,6 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let usersLink = document.getElementById('users');
 
   dashboardLink.addEventListener('click', () => {
+    console.log("heeeey");
     fetch("http://localhost:6000/chamsbotcamp/tokenauth")
       .then(response => {
         if (response.status == 401 || response.status == 500) {
