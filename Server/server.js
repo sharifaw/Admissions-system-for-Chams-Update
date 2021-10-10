@@ -1018,7 +1018,7 @@ app.get("/get-assignments/:id", (request, response) => {
                             if (err) {
                                     return response.status(500).send(err);
                                 }
-                                console.log('result = ',result[0].assignment);
+                                console.log('result = ',result[0]);
                                 response.status(200).send(result);
                             })
                         }

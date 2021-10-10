@@ -34,6 +34,30 @@ submitButton.addEventListener('click', (event) => {
             console.log('result ', result);
         })
 })
+document.querySelector("form").addEventListener("click", event => {
+    // event.preventDefault();
+    if (event.target.className == "input_reset") {
+      event.target.previousElementSibling.classList.add("formTop");
+    }
+    else if (event.target.className == "formLabel") {
+        event.target.classList.add("formTop");
+      event.target.nextElementSibling.focus();
+    }
+    // console.log(event.target.className );
+
+  })
+
+  document.querySelectorAll(".input_reset")[0].addEventListener("focusout", event => {
+    if (event.target.value == "") {
+      event.target.previousElementSibling.classList.remove("formTop");
+    }
+  })
+
+  document.querySelectorAll(".input_reset")[1].addEventListener("focusout", event => {
+    if (event.target.value == "") {
+      event.target.previousElementSibling.classList.remove("formTop");
+    }
+  })
 
 /*
 fetch("http://localhost:6000/passwordreset")
