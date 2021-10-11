@@ -59,9 +59,15 @@ document.body.insertAdjacentHTML(
   `,
 );
 function selectItem() {
-  const adminTemplateElement = document.querySelector("#info");
+  const adminTemplateElement = document.querySelector(".main__admin-template");
 
-  adminTemplateElement.addEventListener("click", (event) => storeCandidateInfoInCookies(event));
+  adminTemplateElement.addEventListener("click", (event) =>
+  {
+    if(event.target.id=="info"){
+      storeCandidateInfoInCookies(event);
+    }
+
+  })
 }
 function storeCandidateInfoInCookies(event) {
   let candidateItem = "";
@@ -107,6 +113,7 @@ function renderUsersInfo(users) {
 
   return (adminTemplateElement.innerHTML = users.reduce((result, user) => {
     const { date_of_birth, first_name, gender, id, last_name, nationality } = user;
+    console.log(gender);
     if (gender == "male") {
       result += `
     <div class="main__item" data-index=${id}>
