@@ -59,7 +59,7 @@ document.body.insertAdjacentHTML(
   `,
 );
 function selectItem() {
-  const adminTemplateElement = document.querySelector(".main__admin-template");
+  const adminTemplateElement = document.querySelector("#info");
 
   adminTemplateElement.addEventListener("click", (event) => storeCandidateInfoInCookies(event));
 }
@@ -107,8 +107,8 @@ function renderUsersInfo(users) {
 
   return (adminTemplateElement.innerHTML = users.reduce((result, user) => {
     const { date_of_birth, first_name, gender, id, last_name, nationality } = user;
-    console.log(gender);
-    if(gender=="male"){result += `
+    if (gender == "male") {
+      result += `
     <div class="main__item" data-index=${id}>
         <div id="empty"></div>
         <i class="fas fa-mars"></i>
@@ -116,18 +116,41 @@ function renderUsersInfo(users) {
         <p class="name">${first_name} ${last_name}</p>
         <p>${nationality}</p>
         <p>${formatDateOfBirth(date_of_birth)}</p>
+        <button id="info">More Info</button>
         </div>
     </div>
-  `;}  
-    result += `
-      <div class="main__item" data-index=${id}>
-          <p>${first_name} ${last_name}</p>
-          <p>${nationality}</p>
-          <p>${formatDateOfBirth(date_of_birth)}</p>
-          <p>${gender}</p>
-      </div>
-    `;
-   
+  `;
+    }
+    if (gender == "female") {
+      result += `
+    <div class="main__item" data-index=${id}>
+       <div id="empty"></div>
+       <i class="fas fa-venus"></i>
+       <div class="para">
+        <p class="name">${first_name} ${last_name}</p>
+        <p>${nationality}</p>
+        <p>${formatDateOfBirth(date_of_birth)}</p>
+        <button id="info">More Info</button>
+
+        </div>
+    </div>
+  `;
+    }
+    if(gender == null){
+      result += `
+    <div class="main__item" data-index=${id}>
+         <div id="empty"></div>
+         <div class="para">
+        <p class="name">${first_name} ${last_name}</p>
+        <p>${nationality}</p>
+        <p>${formatDateOfBirth(date_of_birth)}</p>
+        <button id="info">More Info</button>
+
+        </div>
+    </div>
+  `;
+}
+    
     return result;
   }, ""));
 }
@@ -154,17 +177,17 @@ function createSelectElements() {
   return `
       <select class="main__select" id="stage-select">
           ${stages.reduce((result, stage) => {
-            result += `<option value=${stage[1]} class='main__option'>${stage[0]}</option>`;
+    result += `<option value=${stage[1]} class='main__option'>${stage[0]}</option>`;
 
-            return result;
-          }, "")}
+    return result;
+  }, "")}
       </select>
 
       <select class="main__select" id="sort-by-select">
           ${sortList.reduce((result, type) => {
-            result += `<option value=${type[0]} class='main__option'>${type[1]}</option>`;
-            return result;
-          }, "")}
+    result += `<option value=${type[0]} class='main__option'>${type[1]}</option>`;
+    return result;
+  }, "")}
       </select>
 
   `;
@@ -272,11 +295,11 @@ function enabledDisabledButtons(pageIndex) {
 }
 
 const logOutBtn = document.getElementsByClassName("header__logout")[0];
-logOutBtn.addEventListener("click",()=>{
+logOutBtn.addEventListener("click", () => {
   fetch("http://localhost:6000/logout")
-  .then((response)=>{
-    if (response.status == 200){
-      window.location.href = "../login"
-    }
-  })
+    .then((response) => {
+      if (response.status == 200) {
+        window.location.href = "../login"
+      }
+    })
 })
