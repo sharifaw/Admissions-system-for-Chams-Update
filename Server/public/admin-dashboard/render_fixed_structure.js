@@ -44,7 +44,7 @@ document.body.insertAdjacentHTML(
       <div class="main__select-div">
       ${createSelectElements()}
       </div>
-      <div id="details-registers"class="main__admin-template"> 
+      <div id="details-registers" class="main__admin-template"> 
       
       </div>
       <div class="main__button-div">
@@ -107,6 +107,18 @@ function renderUsersInfo(users) {
 
   return (adminTemplateElement.innerHTML = users.reduce((result, user) => {
     const { date_of_birth, first_name, gender, id, last_name, nationality } = user;
+    console.log(gender);
+    if(gender=="male"){result += `
+    <div class="main__item" data-index=${id}>
+        <div id="empty"></div>
+        <i class="fas fa-mars"></i>
+        <div class="para">
+        <p class="name">${first_name} ${last_name}</p>
+        <p>${nationality}</p>
+        <p>${formatDateOfBirth(date_of_birth)}</p>
+        </div>
+    </div>
+  `;}  
     result += `
       <div class="main__item" data-index=${id}>
           <p>${first_name} ${last_name}</p>
@@ -115,6 +127,7 @@ function renderUsersInfo(users) {
           <p>${gender}</p>
       </div>
     `;
+   
     return result;
   }, ""));
 }
