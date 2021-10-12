@@ -254,7 +254,7 @@ function createSubArraysOfEmails(emails) {
   subArraysOfEmails = [];
 
   while (candidatesEmails.length) {
-    subArraysOfEmails.push(candidatesEmails.splice(0, 9));
+    subArraysOfEmails.push(candidatesEmails.splice(0, 4));
   }
 }
 function renderPreviousNextButtons() {

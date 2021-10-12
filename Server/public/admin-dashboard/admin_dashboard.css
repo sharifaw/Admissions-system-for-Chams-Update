@@ -3,7 +3,8 @@
   display: flex;
 flex-flow: row wrap;
   padding: 15px;
-  margin-left: 70px;
+  margin-left: 30px;
+  justify-content: center;
 }
 .main__select-div {
   margin: auto;
@@ -34,7 +35,7 @@ flex-flow: row wrap;
   line-height: 18px;
   font-size: 16px;
   font-weight: bold;
-  background-color: #f9f1f9;
+  background-color:rgb(202, 179, 241);
 }
 
 /* start details */
@@ -53,7 +54,7 @@ flex-flow: row wrap;
   font-size: 18px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  height: 220px;
+  height: 230px;
   font-size: 15px;
   font-weight: 100px;
   text-align: center;
@@ -72,21 +73,20 @@ flex-flow: row wrap;
 }
 .main__Button {
   border: 1px solid var(--dark-purple);
-  background-color: #f9f1f9;
+  background-color: rgb(185, 150, 245);
   width: 150px;
   padding: 15px;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
-  margin: 5px 5px;
   cursor: pointer;
   border-radius: 8px;
+  
 }
 .main__Button:hover {
-  background-color: var(--dark-purple);
-  color: var(--black);
+  background-color: rgba(41, 28, 64, 1);
+  color: white;
 }
 
 i.fas.fa-mars{
