@@ -6,12 +6,17 @@ import popup from "./components/popup.js";
 // page content
 const subject = ["test_req", "intreview_req", "rejected", "accepted"]
 let emails = []; /*["Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti perspiciatis magnam praesentium nulla vero suscipit","no","yes","noo"];*/
-
+let subjects=[];
 // functions
 function renderEmailTemplates() {
   console.log('em = ',emails.length);
   return emails.reduce((result, email, index) => {
-    result += `<textarea class="main__template" data-index=${index}>${email}</textarea>`;
+    result += `<div id="div_email">
+    <snap>Subject:</snap>
+    <textarea class="main__template" data-index=${index}>${subjects[index]}</textarea>
+    <snap>Email Content:</snap>
+    <textarea class="main__template1" data-index=${index}> ${email}</textarea>
+    </div>`;
     return result;
   }, "");
 }
@@ -24,8 +29,10 @@ function fetchEmails() {
       return response.json();
     })
     .then(result => {
+      console.log(result);
       result.forEach((element, index) => {
         emails[index] = element.text_email
+        subjects[index]=element.subject
       });
       let mainContent = document.querySelector(".main__content");
       mainContent.innerHTML = `${renderEmailTemplates()}`;
@@ -49,7 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
     </main>
     `,
     );
-    console.log("main ");
+    // console.log("main ");
   let mainContent = document.querySelector(".main__content");
 
   mainContent.addEventListener("change", (event) => {

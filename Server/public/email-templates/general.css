@@ -6,7 +6,7 @@
 }
 body {
   /* height: 2000px; */
-  background-color: var(--dark-purple);
+  background-color:  var(--dark-grey);
 }
 /* start variables */
 :root {
@@ -29,12 +29,12 @@ a {
   color: var(--white);
 }
 li {
-  list-style: none;
+  /* list-style: none; */
 }
 
 /* start header */
 .header {
-  background-color: var(--dark-purple);
+  background-color: #2a1c40;
   position: fixed;
   width: 100%;
   z-index: 1;
@@ -43,36 +43,42 @@ li {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 18px 0;
+  padding-bottom: 6px;
 }
 .header__user {
   color: var(--white);
-  margin-right: 150px;
+  margin-right: -119px;
+  margin-top: 41px;
   text-transform: capitalize;
 }
 .header__logout {
   color: var(--white);
+  background-color: #a470ff;
   text-decoration: none;
-  font-size: 23px;
+  font-size: 19px;
   font-weight: bold;
-  padding-right: 30px;
+  margin-top: -13px;
+  margin-right: 16px;
+  padding: 2px 8px;
+  border-radius: 12px;
 }
 /* end header */
 
 /* start main */
 .main {
-  background-color: var(--dark-purple);
+  background: linear-gradient( 0deg, rgba(164, 112, 255, 1) 0%, rgba(148, 101, 230, 1) 11%, rgba(41, 28, 64, 1) 55%);
+  background-attachment: fixed;
 }
 .main .container {
   display: grid;
-  grid-template-columns: 230px 1fr;
+  grid-template-columns: 180px 1fr;
   grid-gap: 0 10px;
 }
 /* start nav*/
 .main__nav {
   padding-left: 15px;
   position: fixed;
-  width: 230px;
+  width: 180px;
   top: 0;
   height: 100vh;
   z-index: 2;
@@ -81,8 +87,14 @@ li {
   width: 230px;
 }
 .main__logo {
-  margin-top: 13px;
-  margin-left: 15px;
+  border-radius: 17px;
+  background-color: #a470ff;
+  margin-top: 7px;
+  margin-left: 14px;
+  margin-right: 9px;
+  margin-bottom: 75px;
+  padding-top: 3px;
+  padding-left: 9px;
 }
 .main__list-item {
   list-style: none;
@@ -92,10 +104,14 @@ li {
   margin-bottom: 50px;
   font-size: 20px;
   font-weight: bold;
+  margin-left: -58px;
+  margin-right: -10px;
+  padding-left: 42px;
+  border-radius: 35px;
 }
 .main__list-item:hover,
 .main__list-item--bg {
-  background-color: var(--light-purple);
+  background-color: var(--purple);
   transition: all 0.4s ease-in-out;
 }
 /* end nav*/
@@ -154,4 +170,5 @@ li {
   color: var(--light-red);
   cursor: pointer;
 }
+
 /* end popup */

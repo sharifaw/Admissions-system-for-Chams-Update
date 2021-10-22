@@ -13,53 +13,71 @@ function getInformationFromCookies() {
 function renderAdminApplicationDetails() {
   const { email, id, first_name, last_name, nationality, unchr, gender, marital_status, phone, field_of_study, employment_status, hearing_about_chams, candidate_background, future_plans, programming_available, coding_experience } = getInformationFromCookies();
   return `
+  
     <div class="main__content main__admin-application-details">
-        <div id="${id}" class="main__summery">
+      <p id="header">Candidate Details</p>
+      <div id="${id}" class="main__summery">
+          <div id="info">
           <div class="main__single-info">
-            <h3>Candidate Name: </h3>${first_name} ${last_name}
+         
+            <h4>Candidate Name: </h4>
+            <snap>${first_name} ${last_name}</snap>
           </div>
           <div class="main__single-info">
-            <h3>Email: </h3> ${email}
+            <h4>Email: </h4>
+            <snap>${email}</snap>
           </div>
           <div class="main__single-info">
-            <h3>Nationality: </h3> ${nationality}
+            <h4>Nationality: </h4> 
+            <snap>${nationality}</snap>
           </div>
           <div class="main__single-info">
-            <h3>UNHCR : </h3> ${unchr}
+            <h4>UNHCR : </h4> 
+            <snap>${unchr}</snap>
           </div>
           <div class="main__single-info">
-            <h3>Date of registration: </h3> 1/1/2021
+            <h4>Date of registration: </h4> 1/1/2021
           </div>
           <div class="main__single-info">
-            <h3>Gender: </h3> ${gender}
+            <h4>Gender: </h4>
+            <snap> ${gender}</snap>
           </div>
           <div class="main__single-info">
-            <h3>Marital State: </h3> ${marital_status}
+            <h4>Marital State: </h4> 
+            <snap>${marital_status}</snap>
           </div>
           <div class="main__single-info">
-            <h3>Phone: </h3> ${phone}
+            <h4>Phone: </h4> 
+            <snap>${phone}</snap>
           </div>
           <div class="main__single-info">
-            <h3>Highest degree earned: </h3> High School
+            <h4>Highest degree earned: </h4> High School
           </div>
           <div class="main__single-info">
-            <h3>Field of study if applicable: </h3> ${field_of_study}
+            <h4>Field of study if applicable: </h4>
+            <snap> ${field_of_study}</snap>
           </div>
           <div class="main__single-info">
-            <h3>Employment Status: </h3> ${employment_status}
+            <h4>Employment Status: </h4> 
+            <snap>${employment_status}</snap>
           </div>
           <div class="main__single-info">
-            <h3>How Did you hear about Chams? </h3> ${hearing_about_chams}
+            <h4>How Did you hear about Chams? </h4>
+            <snap>${hearing_about_chams}</snap>
           </div>
           <div class="main__single-info">
-            <h3>About the candidate: </h3>
-            <p>Tell us about your background</p> ${candidate_background}
-            <p>What is your plans for the future?</p> ${future_plans}
-            <p>Are you fully available for the program?</p> ${programming_available}
-            <p>Coding experience</p> ${coding_experience}
+            <h4>About the candidate: </h4>
+            <p>Tell us about your background</p> 
+            <snap>${candidate_background}</snap>
+            <p>What is your plans for the future?</p> 
+            <snap>${future_plans}</snap>
+            <p>Are you fully available for the program?</p>
+            <snap>${programming_available}</snap>
+            <p>Coding experience</p>
+            <snap>${coding_experience}</snap>
           </div>
-        </div>
-        <div class="main__file-container">
+          </div>
+          <div class="main__file-container">
           <div class="main__file-container-top">
             <div id="assignment">
               <p>assignment path : </p>
@@ -69,6 +87,8 @@ function renderAdminApplicationDetails() {
           <textarea class="main__comment" id="main__comment" name="" id="" placeholder="Type your comment then click on add comment"></textarea>
           <button class="main__comment-btn">Add comment</button>
         </div>
+        </div>
+        
       </div>
   `;
 }
@@ -82,7 +102,7 @@ function renderSelectElement() {
     ["no_application", 6, "No Application"],
   ];
   return `
-    <select name='' id=''>
+    <select name='' id='select'>
       ${candidateStatuses.reduce((result, status) => {
     //getInformationFromCookies().status_id;
     let option = `<option value=${status[1]}>${status[2]}</option>`;
